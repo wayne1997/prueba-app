@@ -1,0 +1,15 @@
+<app-header headerName="Inicio" ></app-header>
+
+<div class="ProfilePage">
+  <ion-card mode="ios" class="ProfileCard" color="tertiary">
+    <ion-card-header>
+        <img class="ProfileImage" [src]="imageUrl" />
+      <ion-card-title>{{user.name}}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>Username: {{user.username}}</p>
+      <p>Ciudad: {{user.address.city}}</p>
+      <p>Teléfono: {{user.phone}}</p>
+    </ion-card-content>
+  </ion-card>
+</div>

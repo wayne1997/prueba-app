@@ -1,0 +1,53 @@
+<div class="LoginPage">
+  <ion-card mode="ios">
+    <ion-card-header>
+      <ion-card-title color="tertiary" >Bienvenid@s</ion-card-title>
+    </ion-card-header>
+    <form  [formGroup]="requiredForm" (ngSubmit)="onSubmit(requiredForm.value)" >
+    <ion-card-content>
+        <ion-item>
+          <ion-label>User:</ion-label>
+          <ion-input 
+          [clearInput]="true" 
+          type="text" 
+          placeholder="Moriah.Stanton"
+          formControlName="user"
+          ></ion-input>
+        </ion-item>
+        <span 
+          class="ErrorMessage"
+          *ngIf="requiredForm.get('user').dirty && requiredForm.get('user').invalid"
+        >
+          Debe contener solo letras
+        </span>
+        <ion-item>
+          <ion-label>Correo:</ion-label>
+          <ion-input 
+          [clearInput]="true" 
+          type="email" 
+          placeholder="Rey.Padberg@karina.biz"
+          formControlName="emailUser"
+          ></ion-input>
+        </ion-item>
+        <span
+        class="ErrorMessage"
+        *ngIf="requiredForm.get('emailUser').dirty && requiredForm.get('emailUser').invalid"
+        >
+          Debe ser un correo válido
+        </span>
+      </ion-card-content>
+      <ion-footer>
+        <ion-button 
+        type="submit"
+        expand="block" 
+        fill="outline" 
+        shape="round" 
+        color="tertiary"
+        [disabled]="requiredForm.invalid"
+        >
+          Iniciar sesión
+        </ion-button>
+      </ion-footer>
+    </form>
+    </ion-card>
+</div>

@@ -1,0 +1,16 @@
+<app-header headerName="Lista de usuarios" ></app-header>
+
+<ion-content [fullscreen]="true">
+    <ion-list lines="none" >
+        <ion-item *ngFor="let user of users" >
+            <ion-avatar slot="start" >
+                <img [src]="imageUrl" />
+            </ion-avatar>
+            <ion-label>
+                <h1>{{user.name}}</h1>
+                <p>{{user.phone}}</p>
+                <p>{{user.email}}</p>
+            </ion-label>
+        </ion-item>
+    </ion-list>
+</ion-content>
