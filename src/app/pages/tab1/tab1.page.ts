@@ -9,14 +9,14 @@ import { StorageService } from 'src/app/services/storage.service';
 })
 export class Tab1Page implements OnInit{
   imageUrl: string = 'https://images.unsplash.com/photo-1516934984448-60e5f2808e6d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=765&q=80s';
-  constructor(private storageService: StorageService) {
+ 
+  user: User = null;
+  constructor(private storageService: StorageService) {}
+ 
+  
+  async ngOnInit() {
+    this.user = await this.storageService.obtainUser();
+    console.log(this.user);
   }
   
-  get user() : User{
-    return this.storageService.userLogged;
-  }
-  
-  ngOnInit() {}
-  
-  logout(){}
 }

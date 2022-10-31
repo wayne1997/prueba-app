@@ -1,15 +1,20 @@
 <app-header headerName="Inicio" ></app-header>
 
 <div class="ProfilePage">
-  <ion-card mode="ios" class="ProfileCard" color="tertiary">
+  <ion-card 
+  *ngIf="user!=null"
+  mode="ios"
+  class="ProfileCard" 
+  color="tertiary">
     <ion-card-header>
         <img class="ProfileImage" [src]="imageUrl" />
-      <ion-card-title>{{user.name}}</ion-card-title>
+      <ion-card-title>{{user.name || 'No name'}}</ion-card-title>
     </ion-card-header>
     <ion-card-content>
-      <p>Username: {{user.username}}</p>
-      <p>Ciudad: {{user.address.city}}</p>
-      <p>Teléfono: {{user.phone}}</p>
+      <p>Username: {{user.username || 'No name'}}</p>
+      <p>Ciudad: {{user.address.city || 'No name'}}</p>
+      <p>Teléfono: {{user.phone || 'No name'}}</p>
     </ion-card-content>
   </ion-card>
+  <ion-spinner *ngIf="user==null" ></ion-spinner>
 </div>

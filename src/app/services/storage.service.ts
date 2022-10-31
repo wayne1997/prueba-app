@@ -5,37 +5,31 @@ import { Storage } from '@ionic/storage-angular';
   providedIn: 'root'
 })
 export class StorageService {
-  private _userLogged: User | null = null;
   private _storage: Storage | null = null;
 
   constructor(private storage: Storage ) { 
     this.init();
   }
 
-  get userLogged(): User{
-    return this._userLogged;
-  }
-
   async init(){
     const storage = await this.storage.create();
     this._storage = storage;
-    await this.obtainUser();
   }
 
   async saveUser( user:User ){
     await this._storage.set('user-logged', user);
   }
 
-  async obtainUser(){
+  async obtainUser(): Promise<User>{
     try{
       const userData = await this._storage.get('user-logged');
-      this._userLogged = {...userData};
+      return userData;
     } catch(error){
       console.log(error);
     }
   }
 
   async cleanData(){
-    await this._storage.clear();
+    await this._storage.remove('user-logged');
   }
 }

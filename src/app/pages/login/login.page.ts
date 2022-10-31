@@ -33,11 +33,11 @@ export class LoginPage  {
     });
   }
 
-  onSubmit(value){
-    this.userService.getUsers().subscribe( data => {
+onSubmit(value){
+    this.userService.getUsers().subscribe( async data => {
       let userLogged = data.find( user => user.email === value.emailUser);
       if( userLogged && userLogged.username === value.user ){
-          this.storageService.saveUser(userLogged);
+          await this.storageService.saveUser(userLogged);
           this.navCtrl.navigateRoot('/tabs');
           this.requiredForm.reset();
       }else{
